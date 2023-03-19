@@ -1,0 +1,56 @@
+<div class="cm-container">
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form>
+                <h1>Create Account</h1>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <h1>Sign in</h1>
+                    <div class="form-wrapper">
+                        <mat-form-field appearance="outline" >
+                            <mat-label>Enter your email</mat-label>
+                            <input class="inp" matInput formControlName="email">
+                            <mat-error *ngIf="loginForm.get('email').errors?.email">Invalid Email</mat-error>
+                            <mat-error *ngIf="loginForm.get('email').errors?.required">Required Feild</mat-error>
+
+                          </mat-form-field>
+                          <mat-form-field appearance="outline" >
+                            <mat-label>Enter your Password</mat-label>
+                            <input class="inp" matInput type="password" formControlName="password" >
+                            <mat-error *ngIf="loginForm.get('password').errors?.required">Required Feild</mat-error>
+                          </mat-form-field>
+                    </div>
+                <!-- <input type="password" formControlName="password" placeholder="Password" /> -->
+                <a (click)="forgotPassword()">Forgot your password?</a>
+
+                <ng-container *ngIf="!loading; else spinner">
+                    <button>Sign In</button>
+                </ng-container>
+                <ng-template #spinner>
+                    <mat-spinner [diameter]=40></mat-spinner>
+                </ng-template>
+                
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" routerLink="/auth/register" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

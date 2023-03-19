@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="action"><mat-icon (click)="close()">close</mat-icon></div>
+    <div mat-dialog-title class="title">
+        <span>Verify OTP</span>
+    </div>
+    <div mat-dialog-content class="main">
+        <div class="body">
+            <mat-form-field appearance="outline">
+                <mat-label>OTP</mat-label>
+                <input matInput type="text" maxlength="6" minlength="6" class="inp" name="otp" [formControl]="otp" placeholder="Enter OTP">
+                <mat-error *ngIf="otp.errors?.required">Required Feild</mat-error>
+                <mat-error *ngIf="otp.errors?.pattern">Only Numbers are accepted</mat-error>
+                <mat-error *ngIf="otp.errors?.maxlength || otp.errors?.minlength">OTP Must have 6 digits</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="submit">
+            <button mat-stroked-button (click)="submit()" color="primary">Verify</button>
+        </div>
+    </div>
+</div>

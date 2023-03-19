@@ -1,0 +1,58 @@
+<div class="cm-container">
+  <div class="container" id="container">
+      <div class="form-container sign-up-container">
+          <form action="#">
+              <h1>Create Account</h1>
+              <input type="text" placeholder="Name" />
+              <input type="email" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+              <button>Sign Up</button>
+          </form>
+      </div>
+      <div class="form-container sign-in-container">
+          <form [formGroup]="registrationForm" (ngSubmit)="register()">
+              <h1>Create Account</h1>
+              <div class="form-wrapper">
+                <mat-form-field appearance="outline" >
+                    <mat-label>Enter your Name</mat-label>
+                    <input class="inp" matInput type="text" formControlName="name" >
+                    <mat-error *ngIf="registrationForm.get('name').errors?.required">Required Feild</mat-error>
+                  </mat-form-field>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Enter your email</mat-label>
+                    <input class="inp" matInput formControlName="email">
+                    <mat-error *ngIf="registrationForm.get('email').errors?.email">Invalid Email</mat-error>
+                    <mat-error *ngIf="registrationForm.get('email').errors?.required">Required Feild</mat-error>
+
+                  </mat-form-field>
+                  
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Enter your Password</mat-label>
+                    <input class="inp" matInput type="password" formControlName="password" >
+                    <mat-error *ngIf="registrationForm.get('password').errors?.required">Required Feild</mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>Confirm Password</mat-label>
+                    <input class="inp" matInput type="password" formControlName="confirmPassword" >
+                    <mat-error *ngIf="registrationForm.get('confirmPassword').errors?.required">Required Feild</mat-error>
+                  </mat-form-field>
+            </div>
+              <button>Register</button>
+          </form>
+      </div>
+      <div class="overlay-container">
+          <div class="overlay">
+              <div class="overlay-panel overlay-left">
+                  <h1>Welcome Back!</h1>
+                  <p>To keep connected with us please login with your personal info</p>
+                  <button class="ghost" id="signIn">Sign In</button>
+              </div>
+              <div class="overlay-panel overlay-right">
+                  <h1>Hello, Friend!</h1>
+                  <p>Already have an Account!, Click down below to get started</p>
+                  <button routerLink="/auth/login" class="ghost" id="signUp">Sign In</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
